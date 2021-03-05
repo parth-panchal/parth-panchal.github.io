@@ -37,13 +37,13 @@ layout: default
 
 * Remote Sensing, GIS and GPS
 * Human Resource Management
+* * Media, Culture and Society
 * Organizational Behavior
 * Principles of Economics
 * Principles of Management
 * Engineering Physics
 * Engineering Chemistry
 * Workshop Practice (Mechanical and Electrical)
-* Media, Culture and Society
 * Elements of Electrical and Electronics Engineering
 * Engineering Graphics
 * English Communication

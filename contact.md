@@ -13,5 +13,5 @@ is_contact: true
 ## Social
 
 1. [Instagram](https://www.instagram.com/parthhpanchal/)
-2. [Github](https://github.com/parth-panchal)
+2. [GitHub](https://github.com/parth-panchal)
 3. [LinkedIn](https://in.linkedin.com/in/parthh-panchal)

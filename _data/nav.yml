@@ -1,0 +1,17 @@
+- name: "Contact"
+  link: "contact"
+
+- name: "Courses"
+  link: "courses"
+  
+# - name: "Publications"
+#   link: "publications"
+
+- name: "Projects"
+  link: "projects"
+
+- name: "Résumé/CV"
+  link: "cv"
+
+- name: "Home"
+  link: "https://parth-panchal.github.io"

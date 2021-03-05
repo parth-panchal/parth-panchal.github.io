@@ -1,2 +1,11 @@
-name: Parth Panchal
+title: Parth Panchal
+url: "https://parth-panchal.github.io"
+baseurl: ""
+
 markdown: kramdown
+
+tracking_id: UA-105573982-1
+
+sass:
+    style: compressed
+    sass_dir: _sass

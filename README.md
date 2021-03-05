@@ -1,2 +1,2 @@
 # parth-panchal.github.io
-currently under development
+Personal website, currently under development

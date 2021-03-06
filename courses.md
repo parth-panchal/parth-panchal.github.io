@@ -12,7 +12,7 @@ layout: default
 * Database Management Systems
 * Computer Architecture
 * Operating Systems
-* Programming for Scientific Computating
+* Programming for Scientific Computing
 * Web Technologies
 * Machine Learning
 * Computer Networks

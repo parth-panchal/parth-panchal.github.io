@@ -37,7 +37,7 @@ layout: default
 
 * Remote Sensing, GIS and GPS
 * Human Resource Management
-* * Media, Culture and Society
+* Media, Culture and Society
 * Organizational Behavior
 * Principles of Economics
 * Principles of Management

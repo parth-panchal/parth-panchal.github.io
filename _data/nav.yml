@@ -4,8 +4,8 @@
 - name: "Courses"
   link: "courses"
   
-# - name: "Publications"
-#   link: "publications"
+- name: "Quizzing"
+  link: "quizzing"
 
 - name: "Projects"
   link: "projects"

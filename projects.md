@@ -10,7 +10,7 @@ layout: default
 
 *March 2021 - April 2021*
 
-Understood, pre-processed and analyzed the New York City Bus Data dataset, and visualised the bus traffic for each hour of a particular day on a Folium map using the HeatMapWithTime plug-in.
+Understood, pre-processed and analyzed the *New York City Bus Data* dataset, and visualised the bus traffic for each hour of a particular day on a Folium map using the HeatMapWithTime plug-in.
 
 ---
 

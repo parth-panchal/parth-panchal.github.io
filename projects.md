@@ -30,7 +30,7 @@ Quantified the similarity of Movies based on Plot Summaries using the nltk libra
 
 ---
 
-### **Blood Bank Management System**
+### **[Blood Bank Management System]**
 
 *February 2020 - March 2020*
 

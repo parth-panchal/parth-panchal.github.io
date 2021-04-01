@@ -1,1 +1,47 @@
-Currently under development
+---
+layout: default
+---
+
+## Projects
+
+---
+
+### **Geospatial Analysis - Visualizing Bus Traffic in New York City**
+
+*March 2021 - April 2021*
+
+Understood, pre-processed and analyzed the New York City Bus Data dataset, and visualised the bus traffic for each hour of a particular day on a Folium map using the HeatMapWithTime plug-in.
+
+---
+
+### **Neighborhood Segmentation and Clustering - Scarborough, Toronto**
+
+*June 2020 - August 2020*
+
+Explored, segmented and did a comparative analysis between all neighborhoods of Scarborough, Toronto. Used Foursquare API for locational information, BeautifulSoup4 for scraping postal codes, k-means clustering for grouping similar neighborhoods and Folium to visualize the clusters on a map.
+
+---
+
+### **Recommendation System using Collabarative Filtering**
+
+*March 2020 - April 2020*
+
+Quantified the similarity of Movies based on Plot Summaries using the nltk library and used the Surprise library for collaborative filtering.
+
+---
+
+### **Blood Bank Management System**
+
+*February 2020 - March 2020*
+
+Developed SQL scripts for a project which housed the data of various donors of a blood bank with their medical history and donor details, along with details of staff and doctors.
+
+---
+
+### **Medical Drugstore Application**
+
+*October 2019 - November 2019*
+
+Functions included bill of purchase generation, stock refilling, searching and sorting of expired medicines along with basic operations like record updation, adding new medicine to inventory, etc.
+
+---

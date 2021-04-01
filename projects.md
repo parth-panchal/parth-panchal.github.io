@@ -22,7 +22,7 @@ Explored, segmented and did a comparative analysis between all neighborhoods of 
 
 ---
 
-### **Recommendation System using Collabarative Filtering**
+### **[Recommendation System using Collabarative Filtering](https://github.com/parth-panchal/Recommendation-system-using-NLP-and-Collaborative-Filtering)**
 
 *March 2020 - April 2020*
 
@@ -38,7 +38,7 @@ Developed SQL scripts for a project which housed the data of various donors of a
 
 ---
 
-### **Medical Drugstore Application**
+### **[Medical Drugstore Application](https://github.com/parth-panchal/medical-store-management-system)**
 
 *October 2019 - November 2019*
 

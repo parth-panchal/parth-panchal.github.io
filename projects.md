@@ -6,7 +6,7 @@ layout: default
 
 ---
 
-### **Geospatial Analysis - Visualizing Bus Traffic in New York City**
+### **[Geospatial Analysis - Visualizing Bus Traffic in New York City]()**
 
 *March 2021 - April 2021*
 
@@ -14,7 +14,7 @@ Understood, pre-processed and analyzed the *New York City Bus Data* dataset, and
 
 ---
 
-### **Neighborhood Segmentation and Clustering - Scarborough, Toronto**
+### **[Neighborhood Segmentation and Clustering - Scarborough, Toronto](https://github.com/parth-panchal/data-science-capstone)**
 
 *June 2020 - August 2020*
 

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-##Résumé
+## Résumé
 
 - *[résumé (1 page)](resume.pdf)*
 

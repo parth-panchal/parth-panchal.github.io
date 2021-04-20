@@ -6,7 +6,7 @@ layout: default
 
 ---
 
-### **[Geospatial Analysis - Visualizing Bus Traffic in New York City]()**
+### **[Geospatial Analysis - Visualizing Bus Traffic in New York City](https://github.com/parth-panchal/parth-panchal.github.io/main/m7.html)**
 
 *March 2021 - April 2021*
 

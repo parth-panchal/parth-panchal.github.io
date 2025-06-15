@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  cursor: none; /* Hide default cursor for blobity */
 }
 
 .App-logo {
@@ -35,4 +36,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Additional styles for better blobity interaction */
+.blobity-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+* {
+  cursor: none !important; /* Ensure cursor is hidden everywhere */
 }

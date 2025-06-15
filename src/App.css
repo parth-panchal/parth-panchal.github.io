@@ -1,49 +1,96 @@
+/* Piet Hello World - Clean and Simple */
 .App {
   text-align: center;
-  cursor: none; /* Hide default cursor for blobity */
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background: #000000;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.piet-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.piet-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.piet-grid {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 2px;
+  background: #222222;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  border: 2px solid #444444;
 }
 
-/* Additional styles for better blobity interaction */
-.blobity-button:hover {
-  transform: scale(1.05);
+.piet-cell {
+  width: 25px;
+  height: 25px;
+  border: none;
   transition: transform 0.2s ease;
 }
 
-* {
-  cursor: none !important; /* Ensure cursor is hidden everywhere */
+.piet-cell:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  position: relative;
+}
+
+/* Piet Standard Colors - Now handled via palette in JS */
+/* Keeping base cell styling only */
+
+.piet-info {
+  color: #ffffff;
+  text-align: center;
+  max-width: 400px;
+}
+
+.piet-info p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.piet-info em {
+  font-style: italic;
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.storage-info {
+  font-size: 0.9rem !important;
+  opacity: 0.6 !important;
+  font-family: monospace !important;
+  margin-top: 15px !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .piet-grid {
+    grid-template-columns: repeat(13, 1fr);
+    gap: 0.5px;
+    padding: 5px;
+  }
+
+  .piet-cell {
+    width: 12px;
+    height: 12px;
+  }
+
+  .piet-title {
+    font-size: 1.8rem;
+  }
 }

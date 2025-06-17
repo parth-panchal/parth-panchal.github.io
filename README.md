@@ -8,11 +8,7 @@ An interactive Mondrian/De Stijl-inspired portfolio built with React and Framer 
 
 ### ✨ Features
 
--   **Pure Art Experience**: Click the center of the Piet grid to enter the portfolio
--   **Mondrian Grid Layout**: Navigate through sections via colored tiles
--   **Dynamic Cursor**: Context-aware Blobity cursor with magnetic effects
--   **Responsive Design**: Optimized for desktop, tablet, and mobile
--   **De Stijl Color Palette**: Authentic colors from the art movement
+Coming soon...
 
 ### 🚧 Coming Soon
 

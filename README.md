@@ -6,10 +6,6 @@
 
 An interactive Mondrian/De Stijl-inspired portfolio built with React and Framer Motion.
 
-### ✨ Features
-
-Coming soon...
-
 ### 🚧 Coming Soon
 
 This portfolio is currently under development. Content sections will be populated with:

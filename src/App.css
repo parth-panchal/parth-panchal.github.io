@@ -462,6 +462,35 @@ body {
   transform: scale(1.02);
 }
 
+/* ===== TILE LINKS STYLING ===== */
+.tile-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  padding: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.tile-link:hover,
+.tile-link:focus,
+.tile-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile-link h1,
+.tile-link h2,
+.tile-link p {
+  margin: 0;
+  pointer-events: none;
+}
+
 /* Skills Section */
 .skills-categories {
   display: grid;

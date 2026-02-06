@@ -216,133 +216,27 @@ export const PIET_COLOR_GRID = [
 	],
 ];
 
-/**
- * Core portfolio sections - streamlined for a focused portfolio experience
- */
-export const PORTFOLIO_SECTIONS = [
-	{
-		key: "about",
-		title: "About Me",
-		description: "Personal background and philosophy",
-		gridZone: "top-left", // corresponds to certain areas of the grid
-	},
-	{
-		key: "projects",
-		title: "Projects",
-		description: "Technical work and creative projects",
-		gridZone: "top-right",
-	},
-	{
-		key: "skills",
-		title: "Skills & Tools",
-		description: "Technical expertise and development stack",
-		gridZone: "center",
-	},
-	{
-		key: "experience",
-		title: "Experience",
-		description: "Professional journey and achievements",
-		gridZone: "bottom-left",
-	},
-	{
-		key: "contact",
-		title: "Contact",
-		description: "Let's connect and collaborate",
-		gridZone: "bottom-right",
-	},
-];
+// Removed unused code:
+// - PORTFOLIO_SECTIONS (not used in current implementation)
+// - GRID_ZONE_MAPPING (not used in current implementation)
+// - getSectionForColor() (not used in current implementation)
+// These were placeholders for features that were never implemented
 
 /**
- * Grid zone mapping - defines which colors correspond to which portfolio sections
- * This creates meaningful interactions while preserving the artistic integrity
- */
-export const GRID_ZONE_MAPPING = {
-	// About section - warm colors (reds, yellows, pinks)
-	about: [
-		"#FFFF00",
-		"#FFB4B4",
-		"#FF0000",
-		"#FFFFB4",
-		"#FFB4FF",
-		"#FF00FF",
-		"#B4FFFF",
-		"#FFBF40",
-	],
-
-	// Projects section - cool blues and cyans
-	projects: [
-		"#0000FF",
-		"#0000B4",
-		"#00FFFF",
-		"#00B4B4",
-		"#B4B4FF",
-		"#B4FFFF",
-		"#40BFFF",
-		"#0080FF",
-	],
-
-	// Skills section - greens and nature colors
-	skills: [
-		"#00FF00",
-		"#00B400",
-		"#B4FFB4",
-		"#80FF80",
-		"#40FF40",
-		"#B4B400",
-		"#808000",
-	],
-
-	// Experience section - purples and magentas
-	experience: [
-		"#B400B4",
-		"#FF00FF",
-		"#FFB4FF",
-		"#8000FF",
-		"#BF40FF",
-		"#FF80FF",
-	],
-
-	// Contact section - neutral and mixed colors
-	contact: [
-		"#C0C0C0",
-		"#808080",
-		"#FFFFFF",
-		"#000000",
-		"#404040",
-		"#BFBFBF",
-		"#404040",
-	],
-};
-
-/**
- * Get the section for a given color based on zone mapping
- */
-export const getSectionForColor = (color) => {
-	for (const section of PORTFOLIO_SECTIONS) {
-		const zoneColors = GRID_ZONE_MAPPING[section.key] || [];
-		if (zoneColors.includes(color)) {
-			return section;
-		}
-	}
-
-	// Default fallback - distribute remaining colors across sections
-	const colorIndex = getUniqueColors().indexOf(color);
-	if (colorIndex !== -1) {
-		const sectionIndex = colorIndex % PORTFOLIO_SECTIONS.length;
-		return PORTFOLIO_SECTIONS[sectionIndex];
-	}
-
-	return null;
-};
-
-/**
- * Extract all unique colors from the Piet grid
+ * Extract all unique colors from the Piet grid (cached at module load)
  * @returns {string[]} Array of unique hex color codes, sorted alphabetically
  */
-export const getUniqueColors = () => {
+const computeUniqueColors = () => {
 	const colors = new Set();
 	PIET_COLOR_GRID.forEach((row) => {
 		row.forEach((color) => colors.add(color));
 	});
 	return Array.from(colors).sort();
 };
+
+// Cache the unique colors at module load (computed once)
+export const UNIQUE_COLORS = computeUniqueColors();
+
+// Deprecated: Use UNIQUE_COLORS constant instead
+// Kept for backwards compatibility during migration
+export const getUniqueColors = () => UNIQUE_COLORS;

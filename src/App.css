@@ -1,4 +1,28 @@
 /* ===== PURE ART PORTFOLIO - RESET & BASE ===== */
+
+/* CSS Custom Properties for consistent theming */
+:root {
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #000000;
+
+  /* Mondrian colors */
+  --color-mondrian-red: #E32017;
+  --color-mondrian-blue: #004B87;
+  --color-mondrian-yellow: #FFD100;
+
+  /* Animation durations */
+  --duration-fast: 0.3s;
+  --duration-medium: 0.5s;
+  --duration-slow: 0.8s;
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +31,8 @@
 
 body {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   overflow-x: hidden;
 }
 
@@ -1129,6 +1153,67 @@ canvas {
 /* Enhanced magnetic effect for tiles */
 .clickable-tile[data-blobity-magnetic="true"]:hover {
   transform: scale(1.02) translateY(-2px);
+}
+
+/* ===== ERROR BOUNDARY STYLES ===== */
+.error-boundary {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  padding: var(--spacing-lg);
+}
+
+.error-content {
+  max-width: 600px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-content h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-mondrian-red);
+}
+
+.error-content p {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.error-content details {
+  text-align: left;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error-content summary {
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  user-select: none;
+}
+
+.error-content pre {
+  overflow-x: auto;
+  font-size: 0.875rem;
+  color: var(--color-mondrian-yellow);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Focus visible styles for better keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-mondrian-yellow);
+  outline-offset: 2px;
 }
 
 /* Disable Blobity on mobile for better performance */

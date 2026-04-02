@@ -42,6 +42,61 @@ body {
   position: relative;
 }
 
+/* ===== SITE NAVIGATION ===== */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #000000;
+  border-bottom: 3px solid #000000;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.nav-link--active {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+}
+
+.nav-link--active:hover {
+  background: #f0f0f0;
+}
+
 /* ===== ART VIEW - PURE GRID EXPERIENCE ===== */
 .art-view {
   min-height: 100vh;
@@ -120,35 +175,15 @@ body {
   background: #f8f8f8;
   position: relative;
   overflow-y: auto;
-}
-
-.back-to-art-btn {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  background: #000000;
-  color: #ffffff;
-  border: none;
-  padding: 1rem 1.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  cursor: pointer;
-  z-index: 1000;
-  transition: all 0.08s ease;
-  border: 2px solid #000000;
-}
-
-.back-to-art-btn:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: translateY(-2px);
+  padding-top: calc(3px + 1rem + 0.85rem * 1.2 + 1rem);
+  /* nav height: border + padding-top + font + padding-bottom */
 }
 
 /* ===== MONDRIAN GRID LAYOUT ===== */
 .mondrian-portfolio {
   width: 100vw;
-  height: 100vh;
-  padding: 4rem 2rem 2rem;
+  height: calc(100vh - calc(3px + 1rem + 0.85rem * 1.2 + 1rem));
+  padding: 1rem 2rem 2rem;
 }
 
 .mondrian-grid {
@@ -356,31 +391,9 @@ body {
 /* ===== SECTION PAGES ===== */
 .section-page {
   min-height: 100vh;
-  padding: 4rem 2rem 2rem;
+  padding: calc(3px + 1rem + 0.85rem * 1.2 + 1rem + 2rem) 2rem 2rem;
   background: #f8f8f8;
   overflow-y: auto;
-}
-
-.back-to-portfolio-btn {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  background: #000000;
-  color: #ffffff;
-  border: none;
-  padding: 1rem 1.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  cursor: pointer;
-  z-index: 1000;
-  transition: all 0.08s ease;
-  border: 2px solid #000000;
-}
-
-.back-to-portfolio-btn:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: translateY(-2px);
 }
 
 .section-content {
@@ -918,7 +931,7 @@ blockquote {
   }
 
   .mondrian-portfolio {
-    padding: 4rem 1rem 2rem;
+    padding: 1rem 1rem 2rem;
   }
 
   .mondrian-grid {
@@ -988,25 +1001,15 @@ blockquote {
     grid-row: 9 / 10;
   }
 
-  .back-to-art-btn,
-  .back-to-portfolio-btn {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    right: auto;
-    padding: 0.8rem 1.2rem;
-    font-size: 0.8rem;
-    z-index: 1001;
-  }
-
-  .back-to-portfolio-btn {
-    left: auto;
-    right: 1rem;
+  /* Navigation Mobile */
+  .nav-link {
+    font-size: 0.75rem;
+    padding: 0.75rem 1rem;
   }
 
   /* Section Pages Mobile */
   .section-page {
-    padding: 3rem 1rem 2rem;
+    padding: calc(3px + 0.75rem + 0.75rem * 1.2 + 0.75rem + 1.5rem) 1rem 2rem;
   }
 
   .section-content {
@@ -1091,7 +1094,7 @@ blockquote {
 /* Small mobile devices */
 @media (max-width: 480px) {
   .mondrian-portfolio {
-    padding: 3rem 0.5rem 1rem;
+    padding: 0.5rem 0.5rem 1rem;
   }
 
   .mondrian-tile {
@@ -1108,18 +1111,17 @@ blockquote {
   }
 
   .section-page {
-    padding: 2.5rem 0.5rem 1rem;
+    padding: calc(3px + 0.75rem + 0.75rem * 1.2 + 0.75rem + 1rem) 0.5rem 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.7rem;
+    padding: 0.6rem 0.75rem;
   }
 
   .project-card,
   .hobby-card {
     padding: 1rem;
-  }
-
-  .back-to-art-btn,
-  .back-to-portfolio-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.75rem;
   }
 }
 
@@ -1142,8 +1144,7 @@ canvas {
 }
 
 .grid-cell,
-.back-to-art-btn,
-.back-to-portfolio-btn,
+.nav-link,
 .project-item,
 .contact-methods a,
 .clickable-tile {
@@ -1223,8 +1224,7 @@ canvas {
   }
 
   .grid-cell,
-  .back-to-art-btn,
-  .back-to-portfolio-btn,
+  .nav-link,
   .project-item,
   .contact-methods a,
   .clickable-tile {

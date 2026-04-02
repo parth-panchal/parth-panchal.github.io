@@ -8,6 +8,7 @@ import {
 	ArtView,
 	PortfolioView,
 	SectionView,
+	Navigation,
 } from "./components";
 import { ROUTES } from "./constants/routes";
 
@@ -27,6 +28,7 @@ function App() {
 		<div className="App">
 			<ErrorBoundary>
 				<BlobityProvider isArtView={isArtView} />
+				<Navigation />
 
 				<AnimatePresence mode="wait">
 					<Routes location={location} key={location.pathname}>

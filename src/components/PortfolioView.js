@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import MondrianTile from "./MondrianTile";
 import { TILE_CONFIGS, COLOR_TILES, ANIMATION } from "../constants/config";
-import { ROUTES } from "../constants/routes";
 
 /**
  * Portfolio View Component
@@ -19,10 +18,6 @@ const PortfolioView = () => {
 		[navigate]
 	);
 
-	const handleBackToArt = useCallback(() => {
-		navigate(ROUTES.HOME);
-	}, [navigate]);
-
 	return (
 		<motion.div
 			key="portfolio"
@@ -32,14 +27,6 @@ const PortfolioView = () => {
 			exit={{ opacity: 0, scale: 1.1 }}
 			transition={{ duration: 0.6, ease: "easeInOut" }}
 		>
-			<button
-				className="back-to-art-btn"
-				onClick={handleBackToArt}
-				aria-label="Back to art view"
-			>
-				← Back to Art
-			</button>
-
 			<motion.div
 				key="grid"
 				className="mondrian-portfolio"

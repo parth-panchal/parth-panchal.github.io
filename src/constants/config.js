@@ -117,7 +117,7 @@ export const BLOBITY_CONFIG = {
 	},
 	FONT: "JetBrains Mono",
 	FOCUSABLE_SELECTOR:
-		"a, button, .grid-cell, .mondrian-tile, .clickable-tile, .color-tile, .back-button, .project-item, .skill-category, .contact-method, .experience-item",
+		"a, button, .grid-cell, .mondrian-tile, .clickable-tile, .color-tile, .nav-link, .project-item, .skill-category, .contact-method, .experience-item",
 };
 
 // Color Mapping for Blobity Cursor (RGB values)

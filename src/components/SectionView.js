@@ -1,9 +1,8 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import SectionPage from "./SectionPage";
-import { isValidSection } from "../constants/routes";
-import { ROUTES } from "../constants/routes";
+import { isValidSection, ROUTES } from "../constants/routes";
 
 /**
  * Section View Component
@@ -12,10 +11,6 @@ import { ROUTES } from "../constants/routes";
 const SectionView = () => {
 	const navigate = useNavigate();
 	const { section } = useParams();
-
-	const handleBackToPortfolio = useCallback(() => {
-		navigate(ROUTES.PORTFOLIO);
-	}, [navigate]);
 
 	// Redirect to portfolio if invalid section
 	if (!isValidSection(section)) {
@@ -32,13 +27,6 @@ const SectionView = () => {
 			exit={{ opacity: 0, x: -50 }}
 			transition={{ duration: 0.5 }}
 		>
-			<button
-				className="back-to-portfolio-btn"
-				onClick={handleBackToPortfolio}
-				aria-label="Back to portfolio"
-			>
-				← Back to Portfolio
-			</button>
 			<SectionPage section={section} />
 		</motion.div>
 	);

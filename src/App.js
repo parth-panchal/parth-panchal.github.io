@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { LazyMotion, MotionConfig } from "framer-motion";
 import "./App.css";
-import { ErrorBoundary, Composition } from "./components";
+import { ErrorBoundary, Composition, BlobityProvider } from "./components";
 import { ROUTES } from "./constants/routes";
 import { warmSymbolFonts } from "./fontWarmup";
 
@@ -37,6 +37,7 @@ function App() {
 		<LazyMotion features={loadMotionFeatures} strict>
 			<MotionConfig reducedMotion="user">
 				<div className="App">
+					<BlobityProvider />
 					<ErrorBoundary>
 						{/* Switching view cuts to the new one, which fades in (CSS). No exit fades:
 						    Framer's opacity exits flash the old view back for a frame as they finish.

@@ -98,3 +98,20 @@ export const COLOR_BLOCKS = {
 };
 
 
+
+// Blobity cursor halo (BlobityProvider). The dot itself is CSS (CURSOR in App.css),
+// so dotColor stays null. ON_LIGHT / ON_DARK are swapped in by what's under the pointer.
+export const BLOBITY_CONFIG = {
+	OPTIONS: {
+		licenseKey: "GPLv3",
+		dotColor: null,
+		size: 20,
+		radius: 12,
+		fontSize: 14,
+		tooltipPadding: 12,
+		font: "JetBrains Mono",
+		focusableElements: "a, button, summary, [role='button'], .tile--closed, .color-block, .project-card, .photo, .poster",
+	},
+	ON_LIGHT: { color: DE_STIJL.INK, opacity: 0.16 },
+	ON_DARK: { color: DE_STIJL.PAPER, opacity: 0.3 },
+};

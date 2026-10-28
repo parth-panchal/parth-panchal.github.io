@@ -98,7 +98,9 @@ Substack and Letterboxd RSS can't be fetched from the browser (no CORS), so `scr
 
 - **PietGrid** - renders any Piet grid; optional active-block dimming, SVG pointer trail, colour remap (`colorFor`) and painting (`onPaint`)
 - **PietReadout** - stdout, current op, DP/CC and stack
-- **Cursor** - on mouse/trackpad devices the cursor is a dot with a soft halo, everywhere (no arrow, no hand). It's pure CSS (`App.css`, CURSOR): the halo is part of the cursor image, so macOS draws it with the pointer, with no lag and no per-frame page work. `--cursor` / `--cursor-hover` hold the images (32x32 max: Chromium hides bigger custom cursors near the window edges); clickable things get the bigger halo, dark areas redefine the variables to a paper-coloured halo, and light surfaces inside dark tiles switch back. Blobity (a JS canvas follower) was removed: anything the page draws trails the real pointer by a frame or two and looked choppy. The inheritance rule is scoped to `body` (a bare `*` makes `html` inherit `auto`). Touch devices keep their defaults
+- **Cursor** - on mouse/trackpad devices the cursor is a custom dot everywhere (no arrow, no hand): CSS in `App.css` (CURSOR), a black dot with a paper ring so it reads on every colour. It's an OS cursor image, so it never lags. The inheritance rule is scoped to `body` (a bare `*` makes `html` inherit `auto` and undoes it). Touch devices keep their defaults
+- **BlobityProvider** - Blobity halo that follows the dot and wraps clickable things; one delegated `mouseover` listener tints it to contrast with what's underneath (`BLOBITY_CONFIG.ON_LIGHT` / `ON_DARK`). Only on `(hover: hover) and (pointer: fine)`, imported when idle. Keep `invert: false` (a full-screen `mix-blend-mode: difference` canvas makes every animation expensive), `magnetic: false` (it fights Framer's layout transforms) and `dotColor: null` (Blobity's own dot is one colour and disappears on matching backgrounds). Its package lists React <=18 and a missing `vue@next` as peers, hence `legacy-peer-deps` in `.npmrc`
+- **Choppiness** - before chasing frame drops, check the frame rate on a blank page: Chromium browsers (Arc included) cap every page at 30 fps in Energy Saver, which turns on by itself below 20% battery
 
 ### Configuration System
 
@@ -108,6 +110,7 @@ All magic numbers and configuration values are centralized in `src/constants/con
 - `ANIMATION` - durations, layout transition, label fade, interpreter pacing, halt/fold timings
 - `DE_STIJL` - palette (mirrored as CSS variables in `App.css`)
 - `SECTIONS`, `COMPOSITION`, `COLOR_BLOCKS` - the composition
+- `BLOBITY_CONFIG` - cursor halo
 
 ### Styling
 
@@ -156,7 +159,7 @@ When deploying:
 ### Framer Motion gotchas (each caused a real bug)
 
 - Never let an element with `layout` collapse to 0×0 (e.g. `display: none` on its only child). Framer divides by the box size and the projection gets stuck at `scale(0)`, hiding labels and section content from then on. Hide with `visibility` instead
-- Don't let anything else write `transform` on layout-animated elements (the old Blobity cursor's `magnetic` option did, and corrupted the tiles)
+- Don't let anything else write `transform` on layout-animated elements (Blobity's `magnetic` option did, and corrupted the tiles, so it is off)
 - Put CSS transforms (like the strip label rotation) on a child of the element Framer animates, not the element itself
 - Don't use Framer for opacity fades at all, in or out. When an opacity animation finishes, Framer hands off to an inline style and the element shows its starting value for one frame: fade-ins flashed invisible on every load, and route `exit` fades flashed the old view back on (the "refresh" when opening /hello). Appear-fades are CSS keyframes in `App.css` (FADE-INS) with `backwards` fill; views and the photo viewer leave instantly (no `AnimatePresence`). Framer is only used for the composition's layout animations
 - The first time the browser draws a symbol missing from the web fonts (↗ ★ × …) it searches system fonts, a long layout that used to stall the first open of Kit. `src/fontWarmup.js` draws every symbol once while idle; add new symbols to its `GLYPHS`

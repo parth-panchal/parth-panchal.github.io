@@ -3,3 +3,4 @@
 // ArtView (/hello) and PietGrid/PietReadout load on demand, so import those directly.
 export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as Composition } from "./Composition";
+export { default as BlobityProvider } from "./BlobityProvider";

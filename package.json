@@ -4,17 +4,20 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"blobity": "^0.2.3",
 		"framer-motion": "^12.18.1",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
+		"react-router-dom": "^7.13.0",
 		"react-scripts": "5.0.1"
 	},
 	"scripts": {
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
+		"prestart": "node scripts/fetch-feeds.mjs",
 		"start": "react-scripts start",
+		"prebuild": "node scripts/fetch-feeds.mjs",
 		"build": "react-scripts build",
+		"preview": "npm run build && node scripts/preview.mjs",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build --dotfiles",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {

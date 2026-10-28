@@ -1,0 +1,38 @@
+# Rebuilds the site daily so the Writing and Films sections pick up new
+# Substack posts and Letterboxd watches (the feeds are fetched at build time).
+# Publishes to the gh-pages branch, same as `npm run deploy`.
+# Scheduled workflows only run from the default branch (main).
+name: Refresh feeds
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # daily, 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # prebuild runs scripts/fetch-feeds.mjs
+      - run: npm run build
+      - name: Publish to gh-pages
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          npx gh-pages -d build --dotfiles -u "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
+            -r "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

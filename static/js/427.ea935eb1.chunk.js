@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkparth_panchal_github_io=self.webpackChunkparth_panchal_github_io||[]).push([[427],{5427:(a,h,t)=>{t.r(h),t.d(h,{default:()=>p});const p=t(6326).z}}]);
+//# sourceMappingURL=427.ea935eb1.chunk.js.map

@@ -8,22 +8,16 @@ An interactive Mondrian/De Stijl-inspired portfolio built with React and Framer 
 
 ### ✨ Features
 
-- **Pure Art Experience**: Click the center of the Piet grid to enter the portfolio
-- **Mondrian Grid Layout**: Navigate through sections via colored tiles
-- **Dynamic Cursor**: Context-aware Blobity cursor with magnetic effects
-- **Responsive Design**: Optimized for desktop, tablet, and mobile
-- **De Stijl Color Palette**: Authentic colors from the art movement
+- **One Mondrian**: the home page is a single composition; every section opens inside it
+- **A painting that runs** (`/hello`): Thomas Schoch's Piet "Hello, world!", executed by a real Piet interpreter, then folded into De Stijl colours
+- **One composition**: opening a section re-proportions the Mondrian instead of changing pages; colour blocks re-compose it
+- **Studio**: paint your own Piet program and run it
+- **Writing & Films**: latest Substack posts and Letterboxd watches, refreshed daily
+- **Photographs**: drop images into `public/photos/`
+- **Now** and **Uses** pages
+- **Projects**: live from GitHub
 
-### 🚧 Coming Soon
-
-This portfolio is currently under development. Content sections will be populated with:
-
-- **Projects**: Development work and creative coding experiments
-- **Skills**: Technical expertise and tools
-- **Experience**: Professional background and achievements
-- **About**: Personal story and interests
-- **Contact**: Ways to get in touch
-- **Misc**: Random interesting things
+Personal content lives in `src/constants/content.js`; Substack and Letterboxd handles in `src/constants/feeds.json`.
 
 ### 🛠️ Development
 
@@ -36,4 +30,4 @@ Visit [http://localhost:3000](http://localhost:3000) to view the development bui
 
 ---
 
-*Built with React • Framer Motion • CSS Grid • Love for Modernist Design*
+*Built with React • Framer Motion • CSS Grid • a Piet interpreter*

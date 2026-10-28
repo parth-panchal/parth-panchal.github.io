@@ -1,26 +1,24 @@
 // Application Route Paths
 // Defines all route paths for React Router
+import { SECTIONS } from "./config";
 
 export const ROUTES = {
+	// The composition is the home page; /portfolio (the old home) redirects here
 	HOME: "/",
-	PORTFOLIO: "/portfolio",
-	ABOUT: "/about",
-	PROJECTS: "/projects",
-	SKILLS: "/skills",
-	EXPERIENCE: "/experience",
-	CONTACT: "/contact",
-	MISC: "/misc",
+	// Schoch's painting, running and folding into the composition
+	PAINTING: "/hello",
+	ABOUT: `/${SECTIONS.ABOUT}`,
+	QUIZZING: `/${SECTIONS.QUIZZING}`,
+	PROJECTS: `/${SECTIONS.PROJECTS}`,
+	WRITING: `/${SECTIONS.WRITING}`,
+	FILMS: `/${SECTIONS.FILMS}`,
+	PHOTOS: `/${SECTIONS.PHOTOS}`,
+	KIT: `/${SECTIONS.KIT}`,
+	STUDIO: `/${SECTIONS.STUDIO}`,
+	CONTACT: `/${SECTIONS.CONTACT}`,
+	INSPIRATION: `/${SECTIONS.INSPIRATION}`,
 };
 
 // Helper function to check if a path is valid
-export const isValidSection = (section) => {
-	const validSections = [
-		"about",
-		"projects",
-		"skills",
-		"experience",
-		"contact",
-		"misc",
-	];
-	return validSections.includes(section);
-};
+export const isValidSection = (section) =>
+	Object.values(SECTIONS).includes(section);

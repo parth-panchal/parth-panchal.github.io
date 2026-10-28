@@ -4,138 +4,97 @@
 // Grid Configuration
 export const GRID_CONFIG = {
 	SIZE: 13,
-	CENTER_ROW: 6,
-	CENTER_COL: 6,
-	VIEWPORT_SIZE: "min(90vw, 90vh)",
 };
 
 // Animation Configuration
 export const ANIMATION = {
-	DURATIONS: {
-		FAST: 0.3,
-		MEDIUM: 0.5,
-		SLOW: 0.8,
-	},
-	TILE_STAGGER: 0.2, // Delay between each Mondrian tile animation
-	COLOR_GROUP_STAGGER: 0.3, // Delay between each color group in PietGrid
-	EASING: "easeInOut",
+	COLOR_GROUP_STAGGER: 0.04, // Delay between each color group in PietGrid
+	// Used whenever the composition re-proportions itself. A tween, not a
+	// spring: overshoot makes layout animations look wobbly.
+	LAYOUT_TRANSITION: { type: "tween", duration: 0.6, ease: [0.65, 0, 0.35, 1] },
+	// /hello runs only when asked: slow enough at first to follow the pointer,
+	// then accelerating (~6s for all 132 steps)
+	PAINTING_PACE: (step) => Math.max(26, 190 * Math.pow(0.95, step)),
+	STUDIO_PACE: (step) => Math.max(14, 90 * Math.pow(0.96, step)),
+	// Hold on "Hello, world!" before the painting folds into Mondrian
+	HALT_HOLD_MS: 900,
 };
 
-// Portfolio Section Keys
+// De Stijl palette
+export const DE_STIJL = {
+	RED: "#E32017",
+	BLUE: "#004B87",
+	YELLOW: "#FFD100",
+	PAPER: "#F4F1EA",
+	INK: "#111111",
+};
+
+// Portfolio sections. Each one is a tile in the composition and a URL (/<id>).
 export const SECTIONS = {
 	ABOUT: "about",
+	QUIZZING: "quizzing",
 	PROJECTS: "projects",
-	SKILLS: "skills",
-	EXPERIENCE: "experience",
+	WRITING: "writing",
+	FILMS: "films",
+	PHOTOS: "photos",
+	KIT: "kit",
+	STUDIO: "studio",
 	CONTACT: "contact",
-	MISC: "misc",
+	INSPIRATION: "inspiration",
 };
 
-// Mondrian Tile Configuration
-// Each tile has specific animation direction and delay
-export const TILE_CONFIGS = [
-	{
-		section: SECTIONS.ABOUT,
-		title: "Parth Panchal",
-		description: "Tech | Movies | Quizzing | Photography",
-		className: "hero-tile",
-		animationDelay: 0.2,
-		animationDirection: { y: 20 },
-		isHero: true,
+/**
+ * Mondrian composition.
+ * Every name in `areas` must form a rectangle. Opening a section keeps the
+ * same areas and only re-sizes the tracks, so every tile slides into place.
+ * `variants` are fr weights for the resting composition; the first is the
+ * default and clicking a plain colour block cycles through the rest. They are
+ * hand-tuned (not random) so no tile ever gets too small for its label.
+ */
+export const COMPOSITION = {
+	desktop: {
+		areas: [
+			"about    about    quizzing       photos   photos   block1",
+			"about    about    writing   photos   photos   films",
+			"projects studio   writing   kit     block2   films",
+			"projects studio   inspiration contact contact block3",
+		],
+		variants: [
+			{ cols: [1.3, 1, 1.05, 0.95, 0.75, 0.85], rows: [1.15, 1, 0.9, 0.6] },
+			{ cols: [1, 0.85, 0.95, 1.25, 1, 1.05], rows: [1, 1.1, 1, 0.6] },
+			{ cols: [1.45, 0.9, 0.85, 0.9, 0.7, 1], rows: [1.3, 0.85, 0.85, 0.6] },
+			{ cols: [1.1, 1.15, 1.3, 0.8, 0.65, 0.8], rows: [1, 1.05, 1.05, 0.65] },
+		],
 	},
-	{
-		section: SECTIONS.PROJECTS,
-		title: "Projects",
-		description: "Click to explore my work",
-		className: "projects-tile",
-		animationDelay: 0.4,
-		animationDirection: { x: -20 },
+	// Colour blocks missing from a layout are simply not drawn
+	mobile: {
+		areas: [
+			"about    about",
+			"quizzing      photos",
+			"writing  films",
+			"projects studio",
+			"kit     contact",
+			"block1   inspiration",
+		],
+		variants: [
+			{ cols: [1, 1], rows: [1.35, 1, 1, 1, 0.9, 0.75] },
+			{ cols: [1.2, 0.85], rows: [1.3, 1.05, 1, 0.9, 0.95, 0.8] },
+			{ cols: [0.8, 1.25], rows: [1.45, 0.9, 1.1, 1, 0.8, 0.75] },
+			{ cols: [1.1, 0.95], rows: [1.35, 1, 0.9, 1.1, 0.9, 0.8] },
+		],
 	},
-	{
-		section: SECTIONS.SKILLS,
-		title: "Skills",
-		description: "View my expertise",
-		className: "skills-tile",
-		animationDelay: 0.6,
-		animationDirection: { x: 20 },
-	},
-	{
-		section: SECTIONS.EXPERIENCE,
-		title: "Experience",
-		description: "Professional background",
-		className: "experience-tile",
-		animationDelay: 0.8,
-		animationDirection: { y: 20 },
-	},
-	{
-		section: SECTIONS.CONTACT,
-		title: "Contact",
-		description: "Get in touch",
-		className: "contact-tile",
-		animationDelay: 1.0,
-		animationDirection: { scale: 0.9 },
-	},
-	{
-		section: SECTIONS.MISC,
-		title: "Misc",
-		description: "Explore random things",
-		className: "misc-tile",
-		animationDelay: 1.2,
-		animationDirection: { opacity: 0 },
-	},
-];
-
-// Decorative Color Tiles Configuration
-export const COLOR_TILES = [
-	{ color: "red", delay: 1.4 },
-	{ color: "blue", delay: 1.6 },
-	{ color: "yellow", delay: 1.8 },
-];
-
-// Blobity Cursor Configuration
-export const BLOBITY_CONFIG = {
-	LICENSE_KEY: "GPLv3",
-	ART_VIEW: {
-		color: "#ffffff",
-		dotColor: "#ffffff",
-		opacity: 0.8,
-		size: 20,
-		radius: 12,
-		magneticLevel: 2,
-		fontSize: 14,
-		tooltipPadding: 12,
-	},
-	PORTFOLIO_VIEW: {
-		color: "#000000",
-		dotColor: "#333333",
-		opacity: 0.8,
-		size: 20,
-		radius: 12,
-		magneticLevel: 2,
-		fontSize: 14,
-		tooltipPadding: 12,
-	},
-	FONT: "JetBrains Mono",
-	FOCUSABLE_SELECTOR:
-		"a, button, .grid-cell, .mondrian-tile, .clickable-tile, .color-tile, .nav-link, .project-item, .skill-category, .contact-method, .experience-item",
+	// Size of a track squeezed to make room for an open section
+	STRIP: "2.75rem",
+	STRIP_MOBILE: "1.75rem",
+	MOBILE_BREAKPOINT: 768,
 };
 
-// Color Mapping for Blobity Cursor (RGB values)
-export const CURSOR_COLORS = {
-	WHITE: {
-		rgb: "rgb(255, 255, 255)",
-		hex: "#000000", // Black cursor on white (inverts to white on black)
-	},
-	RED: {
-		rgb: "227, 32, 23",
-		hex: "#E32017",
-	},
-	BLUE: {
-		rgb: "0, 75, 135",
-		hex: "#004B87",
-	},
-	YELLOW: {
-		rgb: "255, 209, 0",
-		hex: "#FFD100",
-	},
+// Decorative colour blocks, keyed by area name (clicking one re-composes the painting).
+// Empty sections behave the same way until they have content.
+export const COLOR_BLOCKS = {
+	block1: DE_STIJL.RED,
+	block2: DE_STIJL.YELLOW,
+	block3: DE_STIJL.YELLOW,
 };
+
+
